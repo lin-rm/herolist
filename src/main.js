@@ -7,9 +7,11 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import './assets/css/index.css'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
+import HeroList from './views/heroes/HeroList.vue'
 const router = new VueRouter ({
-  routers: [
-
+  routes: [
+    { name: 'home', path:'/', redirect:'/heroes'},
+    { name: 'heros', path:'/heroes', component: HeroList}
   ]
 })
 
