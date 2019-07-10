@@ -214,7 +214,35 @@
 </template>
 
 <script>
-export default {};
+import axios from 'axios'
+
+export default {
+  data () {
+    return {
+      list: []
+    }
+  },
+  mounted() {
+    this.loadData()
+  },
+  methods: {
+    loadData() {
+      axios
+      .get('http://localhost:3000/heroes')
+      .then((response)=>{
+        const { data, status } = response
+        if (status === 200) {
+          this.list = data
+        } else {
+          alert('获取数据失败')
+        }
+      })
+      .catch((err) => {
+        alert('服务器异常')
+      })
+    }
+  }
+};
 </script>
 
 <style>
